@@ -2,7 +2,6 @@ package com.company;
 
 public class Triangle implements Shape {
     private double a=5,b=5,c=6;
-    private double area,p;
     private String color="green";
     public Triangle(){
     }
@@ -21,15 +20,21 @@ public class Triangle implements Shape {
         this.color = color;
     }
 
-    public void setA(double a) {
+    public void setA(double a) throws Exception{
+        if(a<=0)
+            throw new Exception("wrong input");
         this.a = a;
     }
 
-    public void setB(double b) {
+    public void setB(double b) throws Exception{
+        if(b<=0)
+            throw new Exception("wrong input");
         this.b = b;
     }
 
-    public void setC(double c) {
+    public void setC(double c) throws Exception{
+        if(c<=0)
+            throw new Exception("wrong input");
         this.c = c;
     }
 
@@ -55,9 +60,8 @@ public class Triangle implements Shape {
             System.out.println("Incorrect sizes input");
             System.exit(0);
         }
-        p=(a+b+c)/2;
-        area=Math.sqrt(p*(p-a)*(p-b)*(p-c));
-        return area;
+        double p=(a+b+c)/2;
+        return Math.sqrt(p*(p-a)*(p-b)*(p-c));
     }
     @Override
     public String toString(){

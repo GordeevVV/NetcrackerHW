@@ -2,7 +2,6 @@ package com.company;
 
 public class Square implements Shape{
     private double side=4;
-    private double area;
     private String color="blue";
 
     public Square(){
@@ -19,7 +18,9 @@ public class Square implements Shape{
         this.color = color;
     }
 
-    public void setSide(double a) {
+    public void setSide(double a) throws Exception{
+        if(a<=0)
+            throw new Exception("wrong input");
         this.side = a;
     }
 
@@ -32,8 +33,7 @@ public class Square implements Shape{
     }
     @Override
     public double getArea(){
-        area=side*side;
-        return area;
+        return side*side;
     }
     @Override
     public String toString(){

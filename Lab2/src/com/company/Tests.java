@@ -97,4 +97,5 @@ public class Tests {
         double correct=sq.getSide()* sq.getSide();
         Assert.assertEquals(correct,actual,0.0);
     }
+
 }

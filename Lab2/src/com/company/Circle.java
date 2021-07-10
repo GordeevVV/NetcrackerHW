@@ -4,7 +4,7 @@ package com.company;
 public class Circle implements Shape{
     private double radius=1.0;
     private String color="red";
-    private double area;
+
     public Circle(){
 
     }
@@ -18,7 +18,9 @@ public class Circle implements Shape{
     public double getRadius(){
         return radius;
     }
-    public void setRadius(double radius){
+    public void setRadius(double radius) throws Exception{
+        if(radius<=0)
+            throw new Exception("wrong input parameters");
         this.radius=radius;
     }
     public String getColor(){
@@ -29,8 +31,7 @@ public class Circle implements Shape{
     }
     @Override
     public double getArea(){
-        area=Math.PI*Math.pow(radius,2);
-        return area;
+        return Math.PI * Math.pow(radius, 2);
     }
     @Override
     public String toString(){

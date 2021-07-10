@@ -1,7 +1,7 @@
 package com.company;
 
 public class Ellipse implements Shape{
-    private double r1=2,r2=4,area;
+    private double r1=2,r2=4;
     private String color="yellow";
     public Ellipse(){
 
@@ -19,11 +19,15 @@ public class Ellipse implements Shape{
         this.color = color;
     }
 
-    public void setR1(double r1) {
+    public void setR1(double r1) throws Exception{
+        if(r1<=0)
+            throw new Exception("wrong input");
         this.r1 = r1;
     }
 
-    public void setR2(double r2) {
+    public void setR2(double r2) throws Exception{
+        if(r2<=0)
+            throw new Exception("wrong input");
         this.r2 = r2;
     }
 
@@ -41,8 +45,7 @@ public class Ellipse implements Shape{
 
     @Override
     public double getArea(){
-        area=Math.PI*r1*r2;
-        return area;
+        return Math.PI*r1*r2;
     }
     @Override
     public String toString(){
