@@ -7,9 +7,9 @@ public class IsPali implements Palindrome{
             x=-x;
         }
         String tmp=String.valueOf(x);
-        int j=tmp.length()-1;
-        for(int i=0;i<(tmp.length()/2);i++){
-            if(tmp.toCharArray()[i]!=tmp.toCharArray()[j]){
+        char[] arrofstr=tmp.toCharArray();
+        for(int i=0,j=tmp.length()-1;i<(tmp.length()/2);i++){
+            if(arrofstr[i]!=arrofstr[j]){
                 System.out.format("Mistake in %s symbol from start instead of that:\t",i+1);
                 return false;
             }
