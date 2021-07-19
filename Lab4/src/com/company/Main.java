@@ -2,6 +2,7 @@ package com.company;
 
 public class Main {
     public static void main(String args[]){
+
         int[][] mtx={{5,7,3,17}, {7,0,1,12}, {8,1,2,3}};
         int[][] mtx1={{6,4,3,17}, {7,5,10,11}, {18,1,20,3}};
         Matrix matrix1=new MatrixImpl(mtx);

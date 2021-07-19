@@ -1,11 +1,11 @@
 package com.company;
 
-public class TransparentMatrix extends AbstractMatrixOperation{
+public class TransparentMatrix extends AbstractMatrixOperation implements Matrix{
     TransparentMatrix(Matrix matrix){
      super(matrix);
     }
-    @Override
+   @Override
     public int getElement(int i, int j) throws ArrayIndexOutOfBoundsException {
-        return super.getElement(j,i);
+        return mtx1.getElement(j,i);
     }
 }

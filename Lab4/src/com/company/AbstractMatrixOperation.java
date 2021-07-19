@@ -13,6 +13,6 @@ public abstract class AbstractMatrixOperation implements Matrix{
     }
     @Override
     public int getElement(int i, int j) throws ArrayIndexOutOfBoundsException {
-        return mtx1.getElement(i,j);
+        return 0;
     }
 }
