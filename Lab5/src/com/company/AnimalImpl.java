@@ -16,4 +16,12 @@ public class AnimalImpl implements Animal{
     public Species getSpecies() {
         return specie;
     }
+
+    @Override
+    public String toString() {
+        return "AnimalImpl{" +
+                "name='" + name + '\'' +
+                ", specie=" + specie +
+                '}';
+    }
 }

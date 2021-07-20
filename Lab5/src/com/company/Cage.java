@@ -12,4 +12,5 @@ public interface Cage {
     double getArea();
     Condition getCondition();
     boolean isVacantCage();
+    void setVacant(boolean vacant);
 }

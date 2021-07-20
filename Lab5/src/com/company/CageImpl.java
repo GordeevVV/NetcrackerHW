@@ -28,6 +28,18 @@ public class CageImpl implements Cage {
 
     @Override
     public boolean isVacantCage() {
-        return false;
+        return vacant;
+    }
+    public void setVacant(boolean vacant){
+        this.vacant=vacant;
+    }
+    @Override
+    public String toString() {
+        return "CageImpl{" +
+                "number=" + number +
+                ", area=" + area +
+                ", condition=" + condition +
+                ", vacant=" + vacant +
+                '}';
     }
 }
