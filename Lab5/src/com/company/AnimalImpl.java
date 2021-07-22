@@ -17,11 +17,4 @@ public class AnimalImpl implements Animal{
         return specie;
     }
 
-    @Override
-    public String toString() {
-        return "AnimalImpl{" +
-                "name='" + name + '\'' +
-                ", specie=" + specie +
-                '}';
-    }
 }

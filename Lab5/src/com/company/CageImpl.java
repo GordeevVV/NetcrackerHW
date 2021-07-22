@@ -1,15 +1,17 @@
 package com.company;
 
 public class CageImpl implements Cage {
-    private int number;
-    private double area;
-    private Condition condition;
+    private final int number;
+    private final double area;
+    private final Condition condition;
     private boolean vacant;
+    private String name;
     public CageImpl(int number,double area,Condition condition,boolean vacant){
         this.number=number;
         this.area=area;
         this.condition=condition;
         this.vacant=vacant;
+        name=" ";
     }
     @Override
     public int getNumber() {
@@ -30,16 +32,11 @@ public class CageImpl implements Cage {
     public boolean isVacantCage() {
         return vacant;
     }
-    public void setVacant(boolean vacant){
+    public void setVacant(boolean vacant,String name){
         this.vacant=vacant;
     }
-    @Override
-    public String toString() {
-        return "CageImpl{" +
-                "number=" + number +
-                ", area=" + area +
-                ", condition=" + condition +
-                ", vacant=" + vacant +
-                '}';
+
+    public String getName() {
+        return name;
     }
 }

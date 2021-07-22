@@ -10,4 +10,9 @@ public class InhibitionLog {
         this.name = name;
         this.specie = specie;
     }
+
+    @Override
+    public String toString() {
+        return state+" "+name+ " "+specie;
+    }
 }
