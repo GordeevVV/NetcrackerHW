@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Parser {
     private Scanner scanner = new Scanner(System.in);
     private Zoo zoo = new ZooImpl();
-    public Zoo menu() throws Exception{
+    public Zoo menu(){
         Species specie;
         Animal animal;
         String s=" ";
@@ -26,48 +26,56 @@ public class Parser {
             }
             scanner.nextLine();
             String[] data;
-            switch (x) {
-                case 1 -> {
-                    System.out.println("check-in <Вид Животного> <Имя Животного>");
-                    data = parse();
-                    if (!data[0].equals("check-in"))
-                        throw new IllegalArgumentException("wrong input format");
-                    if (data.length!=3)
-                        throw new IndexOutOfBoundsException("wrong arguments");
-                    specie = stringToSpecie(data[1]);
-                    animal = new AnimalImpl(data[2], specie);
-                    zoo.checkInAnimal(animal);
-                    System.out.println();
-                }
-                case 2 -> {
-                    System.out.println("check-out <Вид Животного> <Имя Животного>");
-                    data = parse();
-                    if (!data[0].equals("check-out")) {
-                        throw new IllegalArgumentException("wrong input format");
+            try {
+                switch (x) {
+                    case 1 -> {
+                        System.out.println("check-in <Вид Животного> <Имя Животного>");
+                        data = parse();
+                        if (!data[0].equals("check-in"))
+                            throw new IllegalArgumentException("wrong input format");
+                        if (data.length != 3)
+                            throw new IndexOutOfBoundsException("wrong arguments");
+                        specie = stringToSpecie(data[1]);
+                        animal = new AnimalImpl(data[2], specie);
+                        zoo.checkInAnimal(animal);
+                        System.out.println();
                     }
-                    if (data.length!=3)
-                        throw new IndexOutOfBoundsException("wrong arguments");
-                    specie = stringToSpecie(data[1]);
-                    animal = new AnimalImpl(data[2], specie);
-                    zoo.checkOutAnimal(animal);
-                    System.out.println();
-                }
-                case 3 -> {
-                    List<InhibitionLog> inhibitionLogList = new ArrayList<>();
-                    inhibitionLogList = zoo.getHistory();
-                    for (InhibitionLog i : inhibitionLogList) {
-                        System.out.println(i.toString());
+                    case 2 -> {
+                        System.out.println("check-out <Вид Животного> <Имя Животного>");
+                        data = parse();
+                        if (!data[0].equals("check-out")) {
+                            throw new IllegalArgumentException();
+                        }
+                        if (data.length != 3)
+                            throw new IndexOutOfBoundsException("");
+                        specie = stringToSpecie(data[1]);
+                        animal = new AnimalImpl(data[2], specie);
+                        zoo.checkOutAnimal(animal);
+                        System.out.println();
                     }
-                    System.out.println();
+                    case 3 -> {
+                        List<InhibitionLog> inhibitionLogList = new ArrayList<>();
+                        inhibitionLogList = zoo.getHistory();
+                        for (InhibitionLog i : inhibitionLogList) {
+                            System.out.println(i.toString());
+                        }
+                        System.out.println();
+                    }
                 }
+            }catch (IllegalArgumentException illegalArgumentException){
+                System.out.println("wrong input format");
+            }catch (IndexOutOfBoundsException indexOutOfBoundsException){
+                System.out.println("wrong arguments");
+            }catch (Exception e){
+                e.printStackTrace();
             }
-            System.out.println("Чтобы вернуться в меню нажмите Enter");
-            String readString;
-            if (scanner.hasNextLine()) {
-                readString = scanner.nextLine();
-            } else {
-                readString = null;
-            }
+                System.out.println("Чтобы вернуться в меню нажмите Enter");
+                String readString;
+                if (scanner.hasNextLine()) {
+                    readString = scanner.nextLine();
+                } else {
+                    readString = null;
+                }
         }
         System.out.println("До свидания");
 
