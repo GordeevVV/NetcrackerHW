@@ -12,6 +12,6 @@ import java.util.List;
  */
 public interface Zoo {
     void checkInAnimal(Animal animal) throws Exception;
-    void checkOutAnimal(Animal animal)throws Exception;
+    void checkOutAnimal(Animal animal) throws Exception;
     List<InhibitionLog> getHistory();
 }

@@ -32,24 +32,23 @@ public class Parser {
                         System.out.println("check-in <Вид Животного> <Имя Животного>");
                         data = parse();
                         if (!data[0].equals("check-in"))
-                            throw new IllegalArgumentException("wrong input format");
+                            throw new IllegalArgumentException();
                         if (data.length != 3)
-                            throw new IndexOutOfBoundsException("wrong arguments");
+                            throw new IndexOutOfBoundsException();
                         specie = stringToSpecie(data[1]);
                         animal = new AnimalImpl(data[2], specie);
                         zoo.checkInAnimal(animal);
                         System.out.println();
                     }
                     case 2 -> {
-                        System.out.println("check-out <Вид Животного> <Имя Животного>");
+                        System.out.println("check-out <Имя Животного>");
                         data = parse();
                         if (!data[0].equals("check-out")) {
                             throw new IllegalArgumentException();
                         }
-                        if (data.length != 3)
-                            throw new IndexOutOfBoundsException("");
-                        specie = stringToSpecie(data[1]);
-                        animal = new AnimalImpl(data[2], specie);
+                        if (data.length != 2)
+                            throw new IndexOutOfBoundsException();
+                        animal = nameToAnimal(data[1]);
                         zoo.checkOutAnimal(animal);
                         System.out.println();
                     }
@@ -81,6 +80,13 @@ public class Parser {
 
         return zoo;
     }
+    private Animal nameToAnimal(String name){
+        for (InhibitionLog inhibitionLog: zoo.getHistory()) {
+            if(inhibitionLog.getName().equals(name))
+                return new AnimalImpl(inhibitionLog.getName(),inhibitionLog.getSpecie());
+        }
+        throw new IllegalArgumentException();
+    }
     private String[] parse(){
         String[] data={" "," "};
        if(scanner.hasNext()){
@@ -89,7 +95,7 @@ public class Parser {
         }
          return data;
     }
-    public Species stringToSpecie(String s) throws Exception{
+    private Species stringToSpecie(String s) throws Exception{
         if(s.equals("Leon"))
             return Species.LEON;
         if(s.equals("Giraffe"))
