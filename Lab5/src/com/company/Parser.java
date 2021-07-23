@@ -70,10 +70,12 @@ public class Parser {
             }
                 System.out.println("Чтобы вернуться в меню нажмите Enter");
                 String readString;
-                if (scanner.hasNextLine()) {
-                    readString = scanner.nextLine();
-                } else {
-                    readString = null;
+                if(x!=4) {
+                    if (scanner.hasNextLine()) {
+                        readString = scanner.nextLine();
+                    } else {
+                        readString = null;
+                    }
                 }
         }
         System.out.println("До свидания");
