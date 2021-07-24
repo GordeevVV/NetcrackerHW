@@ -7,4 +7,5 @@ import java.util.List;
  */
 public interface Condition {
     List<Species> isAvailableFor();
+    Condition parceCondition(String s);
 }

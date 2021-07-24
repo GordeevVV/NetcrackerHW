@@ -1,0 +1,4 @@
+1;6.;Leon,Giraffe;false
+2;10.;Leon,Giraffe;false
+3;2.;Squirrel;false
+4;4.;Penguin;false

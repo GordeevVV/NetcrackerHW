@@ -32,10 +32,13 @@ public class CageImpl implements Cage {
     public boolean isVacantCage() {
         return vacant;
     }
+
+    @Override
     public void setVacant(boolean vacant,String name){
         this.vacant=vacant;
     }
 
+    @Override
     public String getName() {
         return name;
     }

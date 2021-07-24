@@ -35,7 +35,7 @@ public class Parser {
                             throw new IllegalArgumentException();
                         if (data.length != 3)
                             throw new IndexOutOfBoundsException();
-                        specie = stringToSpecie(data[1]);
+                        specie = StringToSpecie.stringToSpecie(data[1]);
                         animal = new AnimalImpl(data[2], specie);
                         zoo.checkInAnimal(animal);
                         System.out.println();
@@ -68,9 +68,9 @@ public class Parser {
             }catch (Exception e){
                 e.printStackTrace();
             }
-                System.out.println("Чтобы вернуться в меню нажмите Enter");
+            if(x!=4){ System.out.println("Чтобы вернуться в меню нажмите Enter");
                 String readString;
-                if(x!=4) {
+
                     if (scanner.hasNextLine()) {
                         readString = scanner.nextLine();
                     } else {
@@ -97,15 +97,5 @@ public class Parser {
         }
          return data;
     }
-    private Species stringToSpecie(String s) throws Exception{
-        if(s.equals("Leon"))
-            return Species.LEON;
-        if(s.equals("Giraffe"))
-            return Species.GIRAFFE;
-        if(s.equals("Squirrel"))
-            return Species.SQUIRREL;
-        if(s.equals("Penguin"))
-            return Species.PENGUIN;
-        throw new ClassCastException("Can't convert specie");
-    }
+
 }
