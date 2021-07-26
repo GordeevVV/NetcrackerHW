@@ -38,44 +38,8 @@ public class ZooImpl implements Zoo{
     public List<InhibitionLog> getHistory() {
         return inhibitionLogList;
     }
+    public Animal nameToAnimal(String name) throws NoSuchFieldException{
+       return builder.nameToAnimal(name);
+    }
 
 }
-/* switch(animal.getSpecies()){
-        case LEON -> {
-        if (builder.getLionCage().isVacantCage()) {
-        throw new Exception("Lion's cage is free already");
-        } else {
-        builder.getLionCage().setVacant(false);
-        System.out.println(inhibitionLog);
-        inhibitionLogList.add(new InhibitionLog("check-out", animal.getName(), animal.getSpecies()));
-        }}
-        case GIRAFFE ->{
-        if (builder.getGiraffeCage().isVacantCage()) {
-        throw new Exception("Giraffe's cage is free already");
-        } else {
-        builder.getGiraffeCage().setVacant(false);
-        System.out.println(inhibitionLog);
-        inhibitionLogList.add(new InhibitionLog("check-out", animal.getName(), animal.getSpecies()));
-        }}
-
-        case SQUIRREL -> {
-        if(builder.getSquirrelCage().isVacantCage()){
-        throw new Exception("Squirrel's cage is free already");
-        }
-        else{
-        builder.getSquirrelCage().setVacant(false);
-        System.out.println(inhibitionLog);
-        inhibitionLogList.add(new InhibitionLog("check-out", animal.getName(), animal.getSpecies()));
-        }}
-
-        case PENGUIN -> {
-        if(builder.getPenguinCage().isVacantCage()){
-        throw new Exception("Penguin's cage is free already");
-        }
-        else{
-        builder.getPenguinCage().setVacant(false);
-        System.out.println(inhibitionLog);
-        inhibitionLogList.add(new InhibitionLog("check-out", animal.getName(), animal.getSpecies()));
-        }
-        }
-default -> throw new IllegalStateException("Unexpected value: " + animal.getSpecies());*/

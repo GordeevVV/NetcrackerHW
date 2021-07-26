@@ -5,13 +5,12 @@ public class CageImpl implements Cage {
     private final double area;
     private final Condition condition;
     private boolean vacant;
-    private String name;
+    private Animal animal;
     public CageImpl(int number,double area,Condition condition,boolean vacant){
         this.number=number;
         this.area=area;
         this.condition=condition;
         this.vacant=vacant;
-        name=" ";
     }
     @Override
     public int getNumber() {
@@ -39,7 +38,13 @@ public class CageImpl implements Cage {
     }
 
     @Override
-    public String getName() {
-        return name;
+    public Animal getAnimal() {
+        return this.animal;
     }
+
+    @Override
+    public void setAnimal(Animal animal) {
+        this.animal=animal;
+    }
+
 }

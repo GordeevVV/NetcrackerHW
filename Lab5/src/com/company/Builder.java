@@ -1,18 +1,12 @@
 package com.company;
 
-import java.awt.*;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Builder {
-    private  CageImpl Cage1;
-    private  CageImpl Cage2;
-    private  CageImpl Cage3;
-    private  CageImpl Cage4;
-    List<Cage> cageList=new ArrayList<>();
+    private List<Cage> cageList=new ArrayList<>();
     public Builder(){
         try {
             cageList=readCages("D:\\Documents\\Netcracker\\NetcrackerHMV\\Lab5\\resources\\cageconfig.txt");
@@ -21,13 +15,29 @@ public class Builder {
         }
     }
     public Cage getCage(Animal animal) throws Exception{
-        for (Cage cage:cageList) {
-            if ((animal.getName().equals(cage.getName()) || cage.getName().equals(" "))
-                    && (cage.getCondition().isAvailableFor().contains(animal.getSpecies())))
-                return cage;
-        }
+
+            for (Cage cage : cageList) {
+                try {
+                    if (cage.isVacantCage() && (cage.getCondition().isAvailableFor().contains(animal.getSpecies()))
+                            || (animal.getName().equals(cage.getAnimal().getName())))
+                        return cage;
+                }catch (NullPointerException nullPointerException){
+                    return cage;
+                }
+            }
             throw new Exception("Wrong animal specie");
+
     }
+    public Animal nameToAnimal(String name) throws NoSuchFieldException{
+        for (Cage cage:cageList) {
+            if(cage.getAnimal().getName().equals(name))
+                return cage.getAnimal();
+        }
+        throw new NoSuchFieldException();
+    }
+
+
+
     private List<Cage> readCages(String path) throws IOException {
         List<Cage> result = new ArrayList<>();
 

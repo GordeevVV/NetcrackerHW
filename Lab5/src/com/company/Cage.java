@@ -13,5 +13,7 @@ public interface Cage {
     Condition getCondition();
     boolean isVacantCage();
     void setVacant(boolean vacant,String name);
-    String getName();
+
+    Animal getAnimal();
+    void setAnimal(Animal animal);
 }

@@ -8,4 +8,5 @@ package com.company;
 public interface Animal {
     String getName();
     Species getSpecies();
+    void setName(String name);
 }
