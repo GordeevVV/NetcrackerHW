@@ -1,42 +1,50 @@
 package com.company;
 
 import com.company.Animal;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ZooImpl implements Zoo{
+    private JDBC jdbc=new JDBC();
     private Builder builder=new Builder();
-    private List<InhibitionLog> inhibitionLogList=new ArrayList<>();
     InhibitionLog inhibitionLog;
     @Override
     public void checkInAnimal(Animal animal) throws Exception{
         inhibitionLog= new InhibitionLog("check-in", animal.getName(), animal.getSpecies());
-        if(builder.getCage(animal).isVacantCage()){
-            throw new Exception(animal.getName()+"'s cage is busy");
+        Cage cage=builder.getCage(animal);
+        if(cage.isVacantCage()){
+            cage.setVacant(false, animal);
+            System.out.println(inhibitionLog);
+            jdbc.cageSetVacant(cage,animal);
+            jdbc.setAnimal(animal,cage.getNumber());
+            jdbc.addLogList(inhibitionLog);
         }
         else {
-            builder.getCage(animal).setVacant(true, animal.getName());
-            System.out.println(inhibitionLog);
-            inhibitionLogList.add(inhibitionLog);
+            throw new Exception(animal.getName()+"'s cage is busy");
         }
     }
 
     @Override
     public void checkOutAnimal(Animal animal) throws Exception{
         inhibitionLog= new InhibitionLog("check-out", animal.getName(), animal.getSpecies());
-        if(!builder.getCage(animal).isVacantCage()){
-            throw new Exception(animal.getName()+"'s cage is free already");
+        Cage cage=builder.getCage(animal);
+        if(!cage.isVacantCage()){
+            cage.setVacant(true,null);
+            System.out.println(inhibitionLog);
+            jdbc.cageSetVacant(cage);
+            jdbc.delAnimal(animal.getName());
+            jdbc.addLogList(inhibitionLog);
         }
         else {
-            builder.getCage(animal).setVacant(false," ");
-            System.out.println(inhibitionLog);
-            inhibitionLogList.add(inhibitionLog);
+            throw new Exception(animal.getName()+"'s cage is free already");
         }
     }
 
     @Override
-    public List<InhibitionLog> getHistory() {
-        return inhibitionLogList;
+    public List<InhibitionLog> getHistory() throws SQLException {
+        return jdbc.getLogList();
     }
     public Animal nameToAnimal(String name) throws NoSuchFieldException{
        return builder.nameToAnimal(name);

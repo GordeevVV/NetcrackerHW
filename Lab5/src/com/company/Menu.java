@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu{
+    private JDBC jdbc=new JDBC();
     private Scanner scanner = new Scanner(System.in);
     private ZooImpl zoo = new ZooImpl();
     Parser parser=new Parser();

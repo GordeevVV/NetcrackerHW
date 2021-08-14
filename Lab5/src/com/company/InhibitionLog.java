@@ -15,6 +15,10 @@ public class InhibitionLog {
         return name;
     }
 
+    public String getState() {
+        return state;
+    }
+
     public Species getSpecie() {
         return specie;
     }

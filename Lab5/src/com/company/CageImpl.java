@@ -33,18 +33,19 @@ public class CageImpl implements Cage {
     }
 
     @Override
-    public void setVacant(boolean vacant,String name){
+    public void setVacant(boolean vacant,Animal animal){
         this.vacant=vacant;
+        this.animal=animal;
     }
 
     @Override
     public Animal getAnimal() {
-        return this.animal;
+        return animal;
     }
 
     @Override
     public void setAnimal(Animal animal) {
         this.animal=animal;
-    }
 
+    }
 }

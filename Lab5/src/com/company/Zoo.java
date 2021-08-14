@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.Animal;
+
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -13,5 +15,5 @@ import java.util.List;
 public interface Zoo {
     void checkInAnimal(Animal animal) throws Exception;
     void checkOutAnimal(Animal animal) throws Exception;
-    List<InhibitionLog> getHistory();
+    List<InhibitionLog> getHistory() throws SQLException;
 }
